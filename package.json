@@ -1,0 +1,20 @@
+{
+  "name": "operandum",
+  "version": "1.0.0",
+  "description": "Dotfiles manager",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "github.com/NihadBadalov/operandum"
+  },
+  "keywords": [
+    "operandum",
+    "dotfiles",
+    "manager"
+  ],
+  "author": "Nihad Badalov",
+  "license": "MIT"
+}
