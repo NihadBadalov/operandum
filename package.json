@@ -2,7 +2,10 @@
   "name": "operandum",
   "version": "1.0.0",
   "description": "Dotfiles manager",
-  "main": "src/index.js",
+  "bin": {
+    "operandum": "./src/index.js"
+  },
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -16,5 +19,13 @@
     "manager"
   ],
   "author": "Nihad Badalov",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^20.12.7",
+    "ts-node": "^10.9.2"
+  },
+  "dependencies": {
+    "@clack/prompts": "^0.7.0",
+    "chalk": "^4.1.2"
+  }
 }

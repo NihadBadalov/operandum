@@ -1,8 +1,10 @@
+import fs from 'node:fs';
+
 /**
- * @param {string} iniString The INI string to analyze
+ * @param {string} iniString The INI string to parse
  * @returns {object} INI file contents as an object
  */
-export function analyzeINIString(iniString) {
+export function parseINIString(iniString) {
   const lines = iniString.split('\n');
   const result = {};
   let currentSection = result;
@@ -32,7 +34,50 @@ export function analyzeINIString(iniString) {
  * @param {string} filePath File path
  * @returns {object} INI file contents as an object
  */
-export function analyzeINIFile(filePath) {
+export function parseINIFile(filePath) {
   const contents = fs.readFileSync(filePath, 'utf8');
-  return analyzeINIString(contents);
+  return parseINIString(contents);
+}
+
+/**
+ * @description Writes an INI object to a file, alphabetically sorted
+ * @param {string} filePath File path
+ * @param {object} obj INI object to write to the file
+ */
+export function writeToINIFile(filePath, obj) {
+  if (!filePath.endsWith('.ini'))
+    throw Error('Error: in writeToINIFile: Invalid file path - file does not have an .INI');
+
+  // Write main key-value pairs
+  let iniString = '; operandum - INI config file\n';
+  let queue = [];
+  const sectionQueue = [];
+  for (const [key, val] of Object.entries(obj)) {
+    if (typeof val === 'object') {
+      sectionQueue.push(key);
+      continue;
+    }
+    queue.push(`\n${key}=${val}`);
+  }
+
+  queue.sort();
+  for (const item of queue) {
+    iniString += item;
+  }
+
+  // Write key-value pairs in sections
+  sectionQueue.sort();
+  for (const sectionName of sectionQueue) {
+    iniString += `\n\n[${sectionName}]`;
+    queue = [];
+    for (const [key, val] of Object.entries(obj[sectionName])) {
+      queue.push(`\n${key}=${val}`);
+    }
+    queue.sort();
+    for (const item of queue) {
+      iniString += item;
+    }
+  }
+
+  fs.writeFileSync(filePath, iniString);
 }
