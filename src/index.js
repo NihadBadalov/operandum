@@ -30,7 +30,13 @@ switch (args[0]) {
     (await import('./commands/decrypt.js')).default(workDir, args[1]);
     break;
 
+  case 'update':
+    const updated = (await import('./commands/update.js')).default(workDir);
+    if (updated !== true) break;
+    (await import('./commands/stow.js')).default(workDir);
+    break;
+
   default:
-    console.log('Invalid command');
+    (await import('./commands/help.js')).default();
     break;
 }

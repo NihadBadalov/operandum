@@ -2,6 +2,7 @@
   "name": "operandum",
   "version": "1.0.0",
   "description": "Dotfiles manager",
+  "preferGlobal": true,
   "bin": {
     "operandum": "./src/index.js"
   },

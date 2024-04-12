@@ -5,6 +5,7 @@ const chalk = (await import('chalk')).default;
 import {
   confirm,
   intro,
+  outro,
   text,
 } from '@clack/prompts';
 import { handleCancel } from '../utils/handleClackCancel.js';
@@ -31,25 +32,6 @@ export default async function init(workDir) {
         return;
       }
     }
-
-    /* if ('tasks' in ini) {
-      const tasksFolderExists = fs.existsSync(`${workDir}/${ini.tasks}`);
-      if (!tasksFolderExists) fs.mkdirSync(`${workDir}/${ini.tasks}`);
-    } else {
-      ini['tasks'] = 'tasks';
-      fs.mkdirSync(`${workDir}/tasks`);
-    }
-
-    if ('dotfiles' in ini) {
-      const dotfilesFolderExists = fs.existsSync(`${workDir}/${ini.dotfiles}`);
-      if (!dotfilesFolderExists) fs.mkdirSync(`${workDir}/${ini.dotfiles}`);
-    } else {
-      ini['dotfiles'] = 'dotfiles';
-      fs.mkdirSync(`${workDir}/dotfiles`);
-    }
-
-    writeToINIFile(`${workDir}/operandum.ini`, ini); */
-
     return;
   }
 
@@ -105,6 +87,9 @@ export default async function init(workDir) {
   }
 
   writeToINIFile(`${workDir}/operandum.ini`, ini);
+
+  fs.mkdirSync(`${workDir}/${ini['dotfiles']}`);
+  fs.mkdirSync(`${workDir}/${ini['tasks']}`);
 
   outro(`${chalk.bgGreen.black('operandum successfully initialized!\n\nView your config file at ')}${chalk.bgWhite.black(' operandum.ini ')}`);
 }
