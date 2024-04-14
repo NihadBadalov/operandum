@@ -36,6 +36,15 @@ switch (args[0]) {
     (await import('./commands/stow.js')).default(workDir);
     break;
 
+  case 'stow':
+    (await import('./commands/stow.js')).default(
+      workDir,
+      args.includes('--force') || args.includes('-f'),
+      args.includes('--recursive') || args.includes('-r'),
+      args.includes('--verbose') || args.includes('-v')
+    );
+    break;
+
   default:
     (await import('./commands/help.js')).default();
     break;

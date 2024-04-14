@@ -2,7 +2,7 @@ import fs from 'node:fs';
 
 /**
  * @param {string} iniString The INI string to parse
- * @returns {object} INI file contents as an object
+ * @returns {{[key: string]: string}} INI file contents as an object
  */
 export function parseINIString(iniString) {
   const lines = iniString.split('\n');
@@ -32,9 +32,12 @@ export function parseINIString(iniString) {
 
 /**
  * @param {string} filePath File path
- * @returns {object} INI file contents as an object
+ * @returns {{[key: string]: any}|null} INI file contents as an object; null if the file doesn't exist
  */
 export function parseINIFile(filePath) {
+  if (!filePath.endsWith('.ini'))
+    throw Error('Error: in parseINIFile: Invalid file path - file does not have an .INI');
+  if (!fs.existsSync(filePath)) return null;
   const contents = fs.readFileSync(filePath, 'utf8');
   return parseINIString(contents);
 }
@@ -42,7 +45,7 @@ export function parseINIFile(filePath) {
 /**
  * @description Writes an INI object to a file, alphabetically sorted
  * @param {string} filePath File path
- * @param {object} obj INI object to write to the file
+ * @param {{[key: string]: any}} obj INI object to write to the file
  */
 export function writeToINIFile(filePath, obj) {
   if (!filePath.endsWith('.ini'))
