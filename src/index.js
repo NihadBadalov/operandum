@@ -39,9 +39,8 @@ switch (args[0]) {
   case 'stow':
     (await import('./commands/stow.js')).default(
       workDir,
-      args.includes('--force') || args.includes('-f'),
-      args.includes('--recursive') || args.includes('-r'),
-      args.includes('--verbose') || args.includes('-v')
+      args.includes('--force') || args.includes('-f') || args.includes('-rf') || args.includes('-fr'),
+      args.includes('--recursive') || args.includes('-r') || args.includes('-rf') || args.includes('-fr'),
     );
     break;
 

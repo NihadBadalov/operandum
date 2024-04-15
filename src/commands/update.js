@@ -34,3 +34,7 @@ export default async function update(cwd) {
     });
   });
 }
+
+const DESCRIPTION = `(Git) pull Dotfiles from the remote repository.`;
+const USAGE = 'operandum stow';
+export { DESCRIPTION, USAGE };

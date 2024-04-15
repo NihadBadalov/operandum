@@ -2,14 +2,14 @@ import fs from 'node:fs';
 import { parseINIFile } from "../parser.js";
 import { getDotfileStowDirectories } from '../utils/getDotfileStowDirectories.js';
 import { getBaseDotfileDirectory } from '../utils/getBaseDotfileDirectory.js';
+const chalk = (await import('chalk')).default;
 
 /**
  * @param {string} cwd Current working directory
  * @param {boolean} force If true, existing symlinks will be overwritten without confirmation and replaced
  * @param {boolean} recursive If true, stow will create non-existent parent directories
- * @param {boolean} verbose If true, dotfile to stow directory mappings will be printed ONCE stowing is complete
  */
-export default async function stow(cwd, force, recursive, verbose) {
+export default async function stow(cwd, force, recursive) {
   const baseDir = getBaseDotfileDirectory(cwd);
   if (!baseDir) {
     console.error(chalk.red(`No ${chalk.bgWhite.red(' operandum.ini ')} file found in the current directory or any of its parent directories.`));
@@ -79,3 +79,7 @@ export default async function stow(cwd, force, recursive, verbose) {
   }
   console.log('Done stowing dotfiles.');
 }
+
+const DESCRIPTION = `Stows (symlinks) Dotfiles to their respective stow directories.\n${chalk.green(' More simply, this commands puts your Dotfiles in their places. ')}`;
+const USAGE = 'operandum stow';
+export { DESCRIPTION, USAGE };
