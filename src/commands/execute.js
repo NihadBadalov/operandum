@@ -115,7 +115,7 @@ export default async function execute(cwd, taskName) {
 
         await builtinFunctions[builtinFunctionName](action, baseDir, vars, password)
           .then(() => { successes++; })
-          .catch(() => { failures++; errored = true; });
+          .catch((e) => { failures++; errored = true; console.log(e?.msg || e); });
       }
 
       if (actionKeys.action) {
@@ -130,7 +130,7 @@ export default async function execute(cwd, taskName) {
           console.log(chalk.green(`Action ${chalk.bold(` ${name} `)} executed successfully`));
         }, password, actionKeys.ignore_errors, true)
           .then(() => { successes++; })
-          .catch(() => { if (!errored) failures++; });
+          .catch((e) => { if (!errored) failures++; console.log(e?.msg || e);});
       }
     } catch (error) {
       console.error('Error: ', error);
