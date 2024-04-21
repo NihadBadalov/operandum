@@ -1,6 +1,6 @@
 {
   "name": "operandum",
-  "version": "1.1.2",
+  "version": "1.2.0",
   "description": "Dotfiles manager",
   "preferGlobal": true,
   "bin": {
@@ -27,6 +27,8 @@
   },
   "dependencies": {
     "@clack/prompts": "^0.7.0",
-    "chalk": "^4.1.2"
+    "chalk": "^4.1.2",
+    "read": "^3.0.1",
+    "yaml": "^2.4.1"
   }
 }
