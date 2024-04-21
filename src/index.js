@@ -44,6 +44,11 @@ switch (args[0]) {
     );
     break;
 
+  case 'execute':
+    (await import('./commands/execute.js')).default(workDir, args[1]);
+    // console.log(import.meta.resolve('./commands/execute.ts'));
+    break;
+
   default:
     (await import('./commands/help.js')).default();
     break;
