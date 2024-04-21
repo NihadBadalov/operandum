@@ -7,7 +7,7 @@ actions:
       src: "{{ ssh_files }}"
       password: 12345678
       # No need to use ask_encryption_password if you have the password
-      #ask_encryption_password: true
+      # ask_encryption_password: true
     superuser: false
     ignore_errors: false
 
