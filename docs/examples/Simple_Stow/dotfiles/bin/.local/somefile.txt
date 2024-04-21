@@ -1,0 +1,2 @@
+The .local directory doesn't get symlinked because the $HOME/.local directory already exists
+But this file (somefile.txt) gets symlinked to the $HOME/.local/somefile.txt

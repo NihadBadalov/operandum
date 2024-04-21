@@ -1,0 +1,3 @@
+-- Configuration bla bla bla
+-- the folder .config/nvim (the parent folder of this file) gets symlinked to
+-- ~/.config/nvim

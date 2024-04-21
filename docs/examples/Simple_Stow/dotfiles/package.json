@@ -1,0 +1,4 @@
+{
+  "this file": "does not get stowed",
+  "because": "its name is in locations.ignore file"
+}

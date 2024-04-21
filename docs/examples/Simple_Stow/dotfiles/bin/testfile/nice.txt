@@ -1,0 +1,2 @@
+The whole folder of $HOME/testfile is stowed to $HOME/testfile.
+That means this file can be accessed by $HOME/testfile/nice.txt
