@@ -80,6 +80,6 @@ export default async function stow(cwd, force, recursive) {
   console.log('Done stowing Dotfiles.');
 }
 
-const DESCRIPTION = `Stows (symlinks) Dotfiles to their respective stow directories.\n ${chalk.green(' More simply, this commands puts your Dotfiles in their places. ')}`;
+const DESCRIPTION = `Stows (symlinks) Dotfiles to their respective stow directories\n ${chalk.green(' More simply, this commands puts your Dotfiles in their places ')}`;
 const USAGE = 'operandum stow';
 export { DESCRIPTION, USAGE };

@@ -24,6 +24,6 @@ export default async function help() {
   // TODO: managing N tasks, N dotfiles
 }
 
-const DESCRIPTION = 'Shows a help message for operandum commands.';
+const DESCRIPTION = 'Shows a help message for operandum commands';
 const USAGE = 'operandum help';
 export { DESCRIPTION, USAGE };

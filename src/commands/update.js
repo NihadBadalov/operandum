@@ -35,6 +35,6 @@ export default async function update(cwd) {
   });
 }
 
-const DESCRIPTION = `(Git) pull Dotfiles from the remote repository.`;
+const DESCRIPTION = `(Git) pull Dotfiles from the remote repository`;
 const USAGE = 'operandum update';
 export { DESCRIPTION, USAGE };

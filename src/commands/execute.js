@@ -144,6 +144,6 @@ export default async function execute(cwd, taskName) {
   console.log(chalk.yellow.bold(`${successes + failures} actions executed in ${((Date.now() - timeStart) / 1000).toFixed(2)} seconds.`));
 }
 
-const DESCRIPTION = `Execute a task from the Tasks.`;
+const DESCRIPTION = `Execute a task from the Tasks`;
 const USAGE = 'operandum execute <task-name>';
 export { DESCRIPTION, USAGE };
