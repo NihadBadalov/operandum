@@ -1,0 +1,27 @@
+vars:
+  - name: ssh_files
+    value: "./ssh/*"
+actions:
+  - name: Decrypt ssh files
+    operandum.builtin.decrypt:
+      src: "{{ ssh_files }}"
+      password: 12345678
+      # No need to use ask_encryption_password if you have the password
+      #ask_encryption_password: true
+    superuser: false
+    ignore_errors: false
+
+  - name: "Copy ssh files to ~/.ssh"
+    operandum.builtin.copy:
+      src: "{{ ssh_files }}"
+      dest: "~/.ssh"
+      recursive: true
+    superuser: false
+    ignore_errors: false
+
+  - name: Encrypt ssh files
+    operandum.builtin.encrypt:
+      src: "{{ ssh_files }}"
+      ask_encryption_password: true
+    superuser: false
+    ignore_errors: false
