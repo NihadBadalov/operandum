@@ -26,6 +26,7 @@ export async function decrypt(action, baseDir, vars, _) {
   /** @type {boolean | undefined} */
   let askEncryptionPassword = action[functionName]['ask_encryption_password'];
 
+  if (typeof encryptionPassword === 'number') encryptionPassword = encryptionPassword.toString();
   if (askEncryptionPassword) {
     encryptionPassword = await inputPassword();
     if (!encryptionPassword) return process.exit(0);
@@ -37,8 +38,8 @@ export async function decrypt(action, baseDir, vars, _) {
       .replaceAll(`{{ ${key} }}`, value)
       .replaceAll(`{{${key}}}`, value);
     encryptionPassword = encryptionPassword
-      .replaceAll(`{{ ${key} }}`, value)
-      .replaceAll(`{{${key}}}`, value);
+      ?.replaceAll(`{{ ${key} }}`, value)
+      ?.replaceAll(`{{${key}}}`, value);
   }
 
   // Check if the file exists
