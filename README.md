@@ -1,14 +1,24 @@
 # operandum
 [![Node.js Package](https://github.com/NihadBadalov/operandum/actions/workflows/npm-publish.yml/badge.svg)](https://github.com/NihadBadalov/operandum/actions/workflows/npm-publish.yml)
 
-An easy-to-use Dotfiles, Tasks and Scripts manager for **UNIX systems** (Linux, Macos, etc.)
+An easy-to-use secure Dotfiles, Tasks and Scripts manager for **UNIX systems** (Linux, Macos, etc.)
 
 Currently, it's in development; **however,** it can be used for stowing Dotfiles
 and running tasks.
 
-[User's example](docs/examples/Simple_Stow.md)
+[User's example](https://github.com/NihadBadalov/.dotfiles)
 <br>
-[Documentation example](docs/examples/Simple_Stow.md)
+[Documentation example](docs/examples/Simple_Stow/README.md)
+
+## Table of Contents
+- [Installation](#installation)
+- [Usage](#usage)
+  - [Initialization](#initialization)
+  - [Stowing Dotfiles](#stowing-dotfiles)
+  - [Running Tasks](#running-tasks)
+- [Commands](#commands)
+- [Feedback and Contributing](#feedback-and-contributing)
+- [License](#license)
 
 ## Installation
 Currently, operandum can only be installed using npm. To install it, run the following command:
@@ -51,11 +61,11 @@ you're going to see the following in your config:
 
 ### Stowing Dotfiles
 Your Dotfiles folder's name is `dotfiles` by default. If you changed it,
-you can see its name in `operandum.ini` configuration file.
+you can see its name in `operandum.ini` [configuration file](docs/Configuration.md).
 
 Locations for stowing (or symlinking) your Dotfiles are defined in the `locations.ini` file.
 The `locations.ini` file has a format of:
-```
+```ini
 filename=/path/to/destination
 exapmle=$HOME/.config
 ```
@@ -140,6 +150,9 @@ operandum stow
 ```
 
 ### Running Tasks
+**Tasks are a very powerful feature of operandum, featuring variables,
+built-in functions, and more.**
+
 Your Tasks folder's name is `tasks` by default. If you changed it,
 you can see its name in `operandum.ini` configuration file.
 
@@ -149,11 +162,31 @@ The tasks are defined in separate YAML files (e.g., `task1.yml`, `task2.yml`, et
 
 ##### Example
 Because the Tasks and their compositon is a bit more complex,
-there is a separate [Task Documentation](docs/examples/Simple_Task.md).
+there is a separate [Task Documentation](docs/Tasks.md).
+<br>
+Here is also the documentation for [Task Configuration](docs/Task_Configuration.md) and [Built-in Functions](docs/Builtin_Functions.md)
+\- they both can be found in the Task Documentation.
 
-**Tasks are a very powerful feature of operandum, featuring variables,
-built-in functions, and more.**
+## Commands
+| Command  | Usage | Description                |
+| :------  | :--------   | :------------------------- |
+| `decrypt`| `operandum decrypt <filename>` | AES-256-CBC decryption of a file |
+| `deinit` | `operandum deinit`             | Removes operandum and its config file in the current directory |
+| `encrypt`| `operandum encrypt <filename>` | AES-256-CBC encryption of a file |
+| `execute`| `operandum execute <task-name>`| Execute a task from the Tasks |
+| `help`   | `operandum help`               | Shows a help message for operandum commands |
+| `init`   | `operandum init`               | Initializes operandum and its config file in the current directory |
+| `reinit` | `operandum reinit`             | Reinitializes operandum in the current directory |
+| `stow`   | `operandum stow`               | Stows (symlinks) Dotfiles to their respective stow directories<br>More simply, this commands puts your Dotfiles in their places |
+| `update` | `operandum update`             | (Git) pull Dotfiles from the remote repository |
 
+## Feedback and Contributing
+Errors and suggestions can be reported in the [Issues](https://github.com/NihadBadalov/operandum/issues)
+section of the repository.
+
+If you want to contribute to the project, you can fork the repository and create a pull request.
+
+Contributions to documentation are also welcome.
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
