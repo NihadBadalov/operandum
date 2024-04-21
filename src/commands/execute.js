@@ -145,5 +145,5 @@ export default async function execute(cwd, taskName) {
 }
 
 const DESCRIPTION = `Execute a task from the Tasks.`;
-const USAGE = 'operandum task <task-name>';
+const USAGE = 'operandum execute <task-name>';
 export { DESCRIPTION, USAGE };
