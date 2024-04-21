@@ -27,14 +27,14 @@ export default async function stow(cwd, force, recursive) {
     return;
   }
   if (!fs.existsSync(`${baseDir}/${config.dotfiles}`)) {
-    console.error(chalk.red(`No dotfiles directory found at ${chalk.bgWhite.red(baseDir)}. Please make sure the directory exists and is spelled correctly in ${chalk.bgWhite.red(' operandum.ini ')}.`));
+    console.error(chalk.red(`No Dotfiles directory found at ${chalk.bgWhite.red(baseDir)}. Please make sure the directory exists and is spelled correctly in ${chalk.bgWhite.red(' operandum.ini ')}.`));
     return;
   }
 
-  console.log('Stowing dotfiles...');
+  console.log('Stowing Dotfiles...');
   const dotfileStowDirectories = getDotfileStowDirectories(`${baseDir}/${config.dotfiles}`, true);
   if (typeof dotfileStowDirectories === 'string') {
-    console.error(`Failed to stow dotfiles: could not get dotfile stow directories: ${dotfileStowDirectories}`);
+    console.error(`Failed to stow Dotfiles: could not get dotfile stow directories: ${dotfileStowDirectories}`);
     return;
   }
 
@@ -77,7 +77,7 @@ export default async function stow(cwd, force, recursive) {
     fs.symlinkSync(dotfileFilePath, stowPath);
     console.log(`Stowed ${dotfileFilePath} at ${stowPath}`);
   }
-  console.log('Done stowing dotfiles.');
+  console.log('Done stowing Dotfiles.');
 }
 
 const DESCRIPTION = `Stows (symlinks) Dotfiles to their respective stow directories.\n${chalk.green(' More simply, this commands puts your Dotfiles in their places. ')}`;
