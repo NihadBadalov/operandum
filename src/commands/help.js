@@ -25,5 +25,5 @@ export default async function help() {
 }
 
 const DESCRIPTION = 'Shows a help message for operandum commands.';
-const USAGE = 'operandum help [command - optional]';
+const USAGE = 'operandum help';
 export { DESCRIPTION, USAGE };
