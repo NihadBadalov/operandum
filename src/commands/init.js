@@ -88,8 +88,8 @@ export default async function init(workDir) {
 
   writeToINIFile(`${workDir}/operandum.ini`, ini);
 
-  fs.mkdirSync(`${workDir}/${ini['dotfiles']}`);
-  fs.mkdirSync(`${workDir}/${ini['tasks']}`);
+  if (ini['dotfiles']) fs.mkdirSync(`${workDir}/${ini['dotfiles']}`);
+  if (ini['tasks']) fs.mkdirSync(`${workDir}/${ini['tasks']}`);
 
   outro(`${chalk.bgGreen.black('operandum successfully initialized!\n\nView your config file at ')}${chalk.bgWhite.black(' operandum.ini ')}`);
 }
