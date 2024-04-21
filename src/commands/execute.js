@@ -30,7 +30,7 @@ import { executeCLICommand } from '../utils/executeCLICommand.js';
   * @typedef {{
     * [key: ActionKey | ActionKeyOfBuiltinFunctions]: string;
     * name: string;
-    * action: string;
+    * action?: string;
     * superuser?: boolean;
     * ignore_errors?: boolean;
   * }} Action
