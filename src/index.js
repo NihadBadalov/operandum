@@ -13,10 +13,6 @@ switch (args[0]) {
     (await import('./commands/init.js')).default(workDir);
     break;
 
-  case 'help':
-    (await import('./commands/help.js')).default();
-    break;
-
   case 'reinit':
     (await import('./commands/deinit.js')).default(workDir);
     (await import('./commands/init.js')).default(workDir);
@@ -50,6 +46,6 @@ switch (args[0]) {
     break;
 
   default:
-    (await import('./commands/help.js')).default();
+    (await import('./commands/help.js')).default(workDir);
     break;
 }
