@@ -1,8 +1,10 @@
 # operandum
 **To stow your Dotfiles, run the following command:**
 ```bash
-operandum stow
+operandum stow -f
 ```
+_**IMPORTANT: `-f` (force) is a recommended flag! Otherwise, the stowing process will stop if
+the stowing-end-path is a symlink (i.e. a symlink exists)!**_
 
 ### So, what gets stowed where?
 

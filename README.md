@@ -146,8 +146,10 @@ which means its contents are going to be symlinked inside the `$HOME/.local` dir
 
 **To stow your Dotfiles, run the following command:**
 ```bash
-operandum stow
+operandum stow -f
 ```
+_**IMPORTANT: `-f` (force) is a recommended flag! Otherwise, the stowing process will stop if
+the stowing-end-path is a symlink (i.e. a symlink exists)!**_
 
 ### Running Tasks
 **Tasks are a very powerful feature of operandum, featuring variables,
@@ -177,7 +179,7 @@ Here is also the documentation for [Task Configuration](docs/Task_Configuration.
 | `help`   | `operandum help`               | Shows a help message for operandum commands |
 | `init`   | `operandum init`               | Initializes operandum and its config file in the current directory |
 | `reinit` | `operandum reinit`             | Reinitializes operandum in the current directory |
-| `stow`   | `operandum stow`               | Stows (symlinks) Dotfiles to their respective stow directories<br>More simply, this commands puts your Dotfiles in their places |
+| `stow`   | `operandum stow -f`               | Stows (symlinks) Dotfiles to their respective stow directories<br>More simply, this commands puts your Dotfiles in their places |
 | `update` | `operandum update`             | (Git) pull Dotfiles from the remote repository |
 
 ## Feedback and Contributing
