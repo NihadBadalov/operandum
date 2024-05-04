@@ -4,7 +4,7 @@
   "description": "Dotfiles manager",
   "preferGlobal": true,
   "bin": {
-    "operandum": "./src/index.js"
+    "operandum": "src/index.js"
   },
   "type": "module",
   "scripts": {
