@@ -53,13 +53,19 @@ export default async function stow(cwd, force, recursive) {
       }
     }
 
-    if (fs.existsSync(stowPath)) {
+    let isBrokenSymlink = false;
+    try {
+      isBrokenSymlink = !!fs.lstatSync(stowPath).isSymbolicLink();
+    } catch (e) {
+      isBrokenSymlink = false;
+    }
+    if (fs.existsSync(stowPath) || isBrokenSymlink) {
       if (fs.lstatSync(stowPath).isSymbolicLink()) {
         if (force) {
           fs.unlinkSync(stowPath);
         } else {
-        console.error(`Failed to stow ${dotfileFilePath}: file already exists at stow location`);
-        continue;
+          console.error(`Failed to stow ${dotfileFilePath}: file already exists at stow location`);
+          continue;
         }
       }
       else if (fs.lstatSync(stowPath).isDirectory()) {
@@ -69,7 +75,7 @@ export default async function stow(cwd, force, recursive) {
         if (force) {
           fs.unlinkSync(stowPath);
         } else {
-        console.error(`Failed to stow ${dotfileFilePath}: file already exists at stow location`);
+          console.error(`Failed to stow ${dotfileFilePath}: file already exists at stow location`);
         }
       }
     }
